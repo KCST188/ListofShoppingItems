@@ -1,0 +1,10 @@
+
+<div class="card w-50">
+  <div class="card-body">
+    <strong>Name:</strong>
+    <%= link_to @list_shopping.name, list_shopping_items_path(@list_shopping) %>
+    <br/><br/>
+    <%= link_to 'Edit', edit_list_shopping_path(@list_shopping), class:"btn btn-dark" %>
+    <%= link_to 'Back', list_shoppings_path, class:"btn btn-dark" %>
+  </div>
+</div>

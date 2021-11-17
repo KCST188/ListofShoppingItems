@@ -1,0 +1,26 @@
+<% if user_signed_in? %>
+<h1>Shopping List</h1>
+<table class="table table-hover table-bordered">
+  <thead class="table-dark">
+    <tr>
+      <th>Name</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @list_shoppings.each do |list_shopping| %>
+    <% if list_shopping.user == current_user %>
+      <tr>
+        <td><%= link_to list_shopping.name, list_shopping_items_path(list_shopping), class:"nav-link active" %></td>
+        <td><%= link_to 'Edit', edit_list_shopping_path(list_shopping), class:"btn btn-outline-success btn-sm float-end ms-auto" %>
+        <%= link_to 'Delete', list_shopping, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-outline-danger btn-sm float-end ms-auto" %></td>
+      </tr>
+    <% end %>
+  <% end %>
+  </tbody>
+</table>
+<br>
+
+<%= link_to 'New Shopping List', new_list_shopping_path,  class:"btn btn-primary"%>
+<% end %>

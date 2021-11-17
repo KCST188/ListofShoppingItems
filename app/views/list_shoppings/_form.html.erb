@@ -1,0 +1,26 @@
+<%= form_with(model: list_shopping) do |form| %>
+  <% if list_shopping.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(list_shopping.errors.count, "error") %> prohibited this list_shopping from being saved:</h2>
+
+      <ul>
+        <% list_shopping.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.text_field :name, class:"form-control", placeholder:"Name" %>
+  </div>
+  <div class="field">
+    <%= form.number_field :user_id, id: :list_shopping_user_id, class:"form-control", value: current_user.id, type: :hidden %>
+  </div>
+<br/>
+
+  <br/>
+  <div class="actions">
+    <%= form.submit class:"btn btn-primary" %>
+  </div>
+<% end %>
